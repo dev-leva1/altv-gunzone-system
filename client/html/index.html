@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>GunZone Menu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            cursor: default;
+        }
+
+        .menu-container {
+            background-color: rgba(40, 40, 40, 0.95);
+            border-radius: 10px;
+            padding: 20px;
+            width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ff9900;
+            text-shadow: 0 0 10px rgba(255, 153, 0, 0.3);
+        }
+
+        .menu-item {
+            background-color: rgba(60, 60, 60, 0.9);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .menu-item:hover {
+            background-color: #ff9900;
+            transform: scale(1.02);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(255, 153, 0, 0.3);
+        }
+
+        .mode-description {
+            font-size: 14px;
+            color: #cccccc;
+            margin-top: 5px;
+            transition: color 0.2s ease;
+        }
+
+        .menu-item:hover .mode-description {
+            color: #ffffff;
+        }
+
+        .menu-item:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="menu-title">GunZone - Select Mode</div>
+        
+        <div class="menu-item" id="deathmatch">
+            <div>Deathmatch</div>
+            <div class="mode-description">Every player for themselves. Last survivor wins.</div>
+        </div>
+
+        <div class="menu-item" id="team">
+            <div>Team Battle</div>
+            <div class="mode-description">Fight between two teams.</div>
+        </div>
+
+        <div class="menu-item" id="capture">
+            <div>Capture Points</div>
+            <div class="mode-description">Capture and hold control points.</div>
+        </div>
+    </div>
+
+    <script>
+        if ('alt' in window) {
+            document.getElementById('deathmatch').addEventListener('click', () => selectMode('deathmatch'));
+            document.getElementById('team').addEventListener('click', () => selectMode('team'));
+            document.getElementById('capture').addEventListener('click', () => selectMode('capture'));
+
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    if ('alt' in window) {
+                        alt.emit('gunzone:playHoverSound');
+                    }
+                });
+            });
+
+            function selectMode(mode) {
+                if ('alt' in window) {
+                    alt.emit('gunzone:selectMode', mode);
+                }
+            }
+        }
+    </script>
+</body>
+</html> 
