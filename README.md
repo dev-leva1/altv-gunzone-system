@@ -65,11 +65,6 @@ resources = [
 - Territory control
 - Strategic gameplay
 
-## Dependencies
-
-- alt:V Server
-- Chat resource
-
 ## Commands
 
 - `/exitdm` - Leave the current game mode
@@ -93,12 +88,3 @@ const WEAPONS = {
     // Modify weapon sets as needed
 };
 ```
-
-## License
-
-This project is licensed under the MIT License.
-
-## Credits
-
-- alt:V Team for the multiplayer platform
-- Contributors and testers 
